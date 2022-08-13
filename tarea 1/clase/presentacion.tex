@@ -1,0 +1,50 @@
+\documentclass{beamer}
+\usepackage[spanish]{babel}
+\usepackage{tikz} 
+\usepackage{tikz-network}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithm,algorithmic}
+\usetheme{CambridgeUS}
+\usepackage{url}
+\usepackage{natbib} 
+\title{Tarea 1: Divulgación Científica}
+\author{Lic. Arnoldo Del Toro Peña }
+\institute[UANL]{Universidad Autónoma de Nuevo León}
+\titlegraphic{ \includegraphics[width=2cm]{R.jpg} \hfill \includegraphics[width=4cm]{fime.png} }
+\newcommand{\M}{M_0, M_1, \cdots }
+\newcommand{\X}{X_0, X_1, \cdots, X_n}
+\newcommand{\Y}{Y_0, Y_1, \cdots, Y_n}
+\newtheorem{definicion}{Definición}
+\newcommand{\divul}{Divulgación Científica}
+\newcommand{\difu}{Difución Científica}
+
+\begin{document}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}{Tabla de contenidos}
+		\tableofcontents
+	\end{frame}
+	
+	\section{Divulgación Científica}
+	
+	\begin{frame}{Definiciones}
+		\begin{definicion}[\divul]<1->
+			Se le llama divulgación científica al conjunto de actividades que interpretan y hacen accesible el conocimiento científico al público general, es decir, a todas aquellas labores que llevan el conocimiento científico a las personas interesadas en entenderlo o informarse de él  \citep{fundora_divulgacion_2021}.
+		\end{definicion}
+	
+		\begin{definicion}[\difu]<2->
+			La difusión es la propagación del conocimiento entre especialistas y constituye un tipo de discurso diferente, contiene un conjunto de elementos o signos propios de un discurso especializado y una estructura que se constituyen en factores clave a la hora de su evaluación \citep{espinosa_santos_difusion_2010}.
+		\end{definicion}
+	
+	\end{frame} 
+	
+	\begin{frame}{Bibliografía}
+		 \setcitestyle{notesep={; },round,aysep={,},yysep={;}}
+		\bibliography{biblio}
+		\bibliographystyle{kluwer}
+	\end{frame}
+
+\end{document}
