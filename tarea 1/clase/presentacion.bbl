@@ -1,5 +1,13 @@
 \begin{thebibliography}{xx}
 
+\harvarditem{Barceló}{1998}{barcelo_ciencia_1998}
+Barceló, M.: 1998, Ciencia, divulgación científica y ciencia ficción, {\em
+  Quark} pp.~35--35.
+
+\harvarditem{Diana}{2021}{diana_caracteristicas_2021}
+Diana: 2021, Caracteristicas de una revista de divulgacion cientifica.
+\newline\harvardurl{https://ejemplos.net/caracteristicas-de-una-revista-de-divulgacion-cientifica/}
+
 \harvarditem{Espinosa~Santos}{2010}{espinosa_santos_difusion_2010}
 Espinosa~Santos, V.: 2010, {DIFUSIÓN} y {DIVULGACIÓN} {DE} {LA}
   {INVESTIGACIÓN} {CIENTÍFICA},  {\bf 28}(3),~5--6.
@@ -13,5 +21,18 @@ Fundora, Y.~S. and García, Y.~R.: 2021, La divulgación científica: una
   investigación} {\bf 7}(0),~105--108.
 \newblock Number: 0.
 \newline\harvardurl{\url{http://revistas.bnjm.cu/index.php/BAI/article/view/315}}
+
+\harvarditem{{INTI}}{2021}{inti_cine_2021}
+{INTI}: 2021, Cine documental ¿qué es? tipos de documental y sus
+  características.
+\newline\harvardurl{https://intiaudiovisual.com/cine-documental/}
+
+\harvarditem{\textit{La Investigación científica a través de
+  Internet}}{2022}{noauthor_investigacion_nodate}
+\textit{La Investigación científica a través de Internet}: 2022, La
+  investigación científica a través de internet,
+  \url{http://www.ub.edu/geocrit/arac-19.html}.
+\newblock Consultado el día 2022-08-10.
+\newline\harvardurl{http://www.ub.edu/geocrit/arac-19.html}
 
 \end{thebibliography}

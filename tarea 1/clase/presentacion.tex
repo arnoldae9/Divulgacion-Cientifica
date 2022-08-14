@@ -6,17 +6,23 @@
 \usepackage{algorithm,algorithmic}
 \usetheme{CambridgeUS}
 \usepackage{url}
+\usepackage{hyperref}
 \usepackage{natbib} 
 \title{Tarea 1: Divulgación Científica}
 \author{Lic. Arnoldo Del Toro Peña }
 \institute[UANL]{Universidad Autónoma de Nuevo León}
 \titlegraphic{ \includegraphics[width=2cm]{R.jpg} \hfill \includegraphics[width=4cm]{fime.png} }
-\newcommand{\M}{M_0, M_1, \cdots }
-\newcommand{\X}{X_0, X_1, \cdots, X_n}
-\newcommand{\Y}{Y_0, Y_1, \cdots, Y_n}
+
 \newtheorem{definicion}{Definición}
 \newcommand{\divul}{Divulgación Científica}
 \newcommand{\difu}{Difución Científica}
+
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen=right} estas lineas se activan cuando la presentación será en un monitor externo.
 
 \begin{document}
 	
@@ -28,7 +34,7 @@
 		\tableofcontents
 	\end{frame}
 	
-	\section{Divulgación Científica}
+	\section{Definiciones}
 	
 	\begin{frame}{Definiciones}
 		\begin{definicion}[\divul]<1->
@@ -41,10 +47,58 @@
 	
 	\end{frame} 
 	
-	\begin{frame}{Bibliografía}
+	\section{Medios de Comunicación}
+	
+	\begin{frame}{Medios de Comunicación}
+		\begin{itemize}
+			\item Documentales de televisión. \citep{inti_cine_2021}
+			\item Revistas de divulgación científica. \citep{diana_caracteristicas_2021}
+			\item Páginas de internet. \citep{noauthor_investigacion_nodate}
+		\end{itemize}
+	\end{frame}
+
+	% diapositiva medios efectivos
+	\section{Medios más efectivos}
+	\begin{frame}
+		\frametitle{Medios más efectivos}
+		\begin{block}{Ciencia ficción}
+			Si bien la divulgación científica tiene mala prensa entre los científicos, puede parecer una herejía incluso mayor reivindicar como destacable el importante papel de un nivel incluso más «degradado» en el difícil y necesario empeño de llevar la tecnociencia al gran público. \cite{barcelo_ciencia_1998} presenta que la ciencia ficción ha sido el medio más grande de divulgación científica.
+		\end{block}
+	\end{frame}
+
+	\section{Fuentes de divulgación científica}
+	\begin{frame}
+		
+		\frametitle{Fuentes de divulgación científica}
+		\begin{enumerate}
+			\item \href{https://www.sciencedirect.com/}{\textbf{ScienceDirect}} 
+			\item \href{https://www.elsevier.es/es}{\textbf{Elsevier}}
+			\item \href{https://www.scopus.com/home.uri}{\textbf{Scopus}}
+		\end{enumerate}
+		
+	\end{frame}
+	
+	\section{Opinión personal}
+	\begin{frame}
+		\frametitle{Opinión Personal}
+		 \begin{definicion}[Por un lado:]<1->
+		 	Personalmente creo que la realización más importante de la divulgación científica radica en la posibilidad de despertar la curiosidad a los jóvenes sobre la ciencia
+		 \end{definicion}
+	 	\begin{definicion}[Por otro lado]<2->
+	 		Un ejemplo claro de las consecuencias de privar a lo que podemos llamar (sin intención de ofender) “pueblo general” del conocimiento de la ciencia lo encontramos en la pérdida del fuego griego, la biblioteca de Alejandría o el hormigón romano, si bien la destrucción de estos fue directamente causada por guerras, el no poder recuperar esos conocimientos fue sin duda por la falta de divulgación científica que se tenían en las épocas respectivas.
+	 		
+	 	\end{definicion}
+		  
+		 
+	\end{frame}
+	
+	\begin{frame}[allowframebreaks]
+		\frametitle{Bibliografía}
 		 \setcitestyle{notesep={; },round,aysep={,},yysep={;}}
 		\bibliography{biblio}
 		\bibliographystyle{kluwer}
 	\end{frame}
+
+	
 
 \end{document}
