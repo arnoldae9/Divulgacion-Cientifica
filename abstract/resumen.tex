@@ -1,0 +1,127 @@
+%
+%  Template para Resumen Extendido
+%  X CSMIO UADY
+%
+
+\documentclass[10pt]{article}
+
+\usepackage{anysize} 
+\papersize{27.9cm}{21.6cm}
+\marginsize{1.5cm}{1.5cm}{-2cm}{-1.0cm}% izq der arriba
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+
+\usepackage[round]{natbib}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\decimalpoint
+
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Palabras claves---}} #1
+}
+
+
+%
+%  Título, autores, adscripciones, correo electrónico
+%
+\title{\bf Uso de Q-Learning en el Problema de Entrega de Concreto}
+
+\author{\bf Lic. Arnoldo Del Toro Peña \\
+\normalsize{
+$^{1}$Facultad de Ingeniería Mecánica y Elécctrica, Universidad Autónoma de Nuevo León}\\
+\normalsize{
+$^\ast$ Correo electr\'onico:  arnoldo.toropn@uanl.edu.mx}
+}
+
+\date{\empty}
+
+\begin{document}
+\maketitle
+\keywords{Q-Learning, CDP, Optimización, Concreto.}\\
+\medskip
+
+%
+%  Resumen
+%
+Desde un punto general los proveedores de concreto tienen múltiples problemas a los que se enfrentan, por ejemplo la adquisición de las materias primas, la entrega del concreto, administración de los conductores etc. En este artículo se presenta el Problema de Entrega de Concreto (Concrete Delivary Problem) que se centra en la parte logística y de distribución de la operación, dicho de otra manera: la planificación y el enrutamiento del concreto. El objetivo es encontrar rutas que cumplan con múltiples visitas (solo si es necesario) a diferentes depósitos de producción de concreto utilizando una flota de vehículos (heterogéneos) y cumpliendo con las entregas a los distintos sitios de de construcción, a todo esto se adhiere una planificación y restricciones de enrutamiento. Los parámetros se presentan en la tabla \ref{parametros}:
+
+\begin{table}[h!]
+	\begin{center}
+	\begin{tabular}{|c|l|}
+		\hline
+		\textbf{Parámetros} & \textbf{Descripción}                                                                \\ \hline
+		$P$                & Conjunto de sitios de producción.                                                   \\ \hline
+		$C$                & Conjunto de Clientes.                                                               \\ \hline
+		0, $n+1$           & Inicio y final en depósitos de los camiones.                                        \\ \hline
+		$V$                & $V = P \cup C \cup {0} \cup {n+1}$                                                  \\ \hline
+		$K$                & Conjunto de camiones.                                                               \\ \hline
+		$q_i$              & Concreto solicitado por el cliente $i \in C$.                                       \\ \hline
+		$q_k$              & Capacidad del camión $k \in K$.                                                     \\ \hline
+		$p_k$              & Tiempo requerido para vaciar el camion $k \in K$.                                   \\ \hline
+		$a_i,b_i$          & Ventana de tiempo en la cual se tiene que realizar la entrega al cliente $i \in C$. \\ \hline
+		$t_{ij}$           & Tiempo para viajar de $i$ a $j$,  $i,j \in V$.                                      \\ \hline
+		$\gamma$           & Tiempo máximo de espera entre dos entregas consecutivas.                            \\ \hline
+	\end{tabular}
+	\caption{Parámetros}
+	\label{parametros}
+	\end{center}
+\end{table}
+
+En la actualidad el Problema de Entrega de Concreto (Concrete Delivary Problem) se ha presentado en literaturas de maneras muy diferentes y de cantidad considerable, sin embargo sus amplias definiciones, variantes y su dificultad para obtener datos de manera pública tiene como consecuencia un obstáculo al momento de realizar sus comparaciones, por lo tanto utilizamos instancias de acceso público, y se toman dos enfoques: uno metaheurístico y otro exacto, para verificar los resultados obtenidos en el algoritmo Q-Learning implementado.
+
+El algoritmo Q-Learning sigue una actualización por medio de la ecuación: \[ new \, Q \leftarrow Q(s,a,\theta_M) + \alpha (r+\gamma \, \underbrace{max}_{a'} \, Q(s',a',\theta_T) + Q(s,a,\theta_M)) \] se inicia el búfer de reproducción \textit{R} en la cual definimos un estado inicial $s_0$ (vacío), se inicializan los pesos del modelo $\theta_M$ y los pesos del \textit{Target} $\theta_T = \theta_M$, obtenemos el conjunto $A$ como las acciones no enmascaradas para el estado $s_t$, si el conjunto es diferente del vacío entonces en base a una probabilidad $\epsilon$ seleccionaremos una acción $a_t \in A$ de lo contrario $a_t = \text{argmax} \, Q (s_t,a,\theta_M)$. Aplicamos la acción seleccionada, conseguimos la recompensa $r_t$ y el estado $s_{t+1}$. Salvamos $(s_t,a_t,r_t,s_{t+1})$ en \textit{R}. Realizamos un mini lote de muestra $\beta$ desde \textit{R} en este mini lote aplicaremos la ecuación 1, se realiza el descenso de gradiente por medio de $(\text{new} \, Q -Q(s,a,\theta_M))^2$ para actualizar $\theta_M$. Cuando se termina el mini lote asignamos $s_{t+1} \leftarrow s_0$ (reiniciamos desde un estado vacío). Por último cada \textit{K} iteraciones $\theta_T = \theta_M$.
+
+Un estado $s$ contiene información parcial de la solución, una acción corresponde a la visita al cliente \textit{c} en el tiempo \textit{t}, cuando la acción es aplicada, el agente escoge un vehículo para ejecutar la acción y el próximo estado es creado. $Q(s,a,\theta_M)$ es el valor Q obtenido usando la red neuronal \textit{Model}. $Q(s,a,\theta_T)$ es el valor Q obtenido usando la red neuronal \textit{Target}. La red neuronal \textit{Target} es actualizada con los pesos de la red neuronal \textit{Model} cada \textit{K} iteraciones. La red neuronal \textit{Model} es actualizada cada iteración usando el mini lote. La acción de enmascarar garantiza la factibilidad de la solución explorada.
+
+Pasamos a la parte del constructor de la mejor solución, $S \leftarrow \empty$ solución vacía y un estado $s$ vacío, obtenemos el conjunto de acciones no enmascaradas $A$ para el estado $s$, mientras el conjunto $A \neq \emptyset$ seleccionamos la acción a mediante $$ \underbrace{argmax}_{a' \in A} \, Q (s_t,a',\theta_M) $$ aplicamos la acción $a$ y obtenemos la recompensa $r$, el siguiente estado $s'$, y asignamos el vehículo $v$, salvamos $S \leftarrow S \,\cup \{ (a,v)\} $, $s \leftarrow s'$ y actualizamos $A$ como el conjunto de acciones no enmascaradas para el estado $s$, y por último recuperamos $S$.
+%
+%   Referencias
+%
+
+
+
+%\bibliographystyle{plainnat}
+%\begin{thebibliography}{3}
+%\small 
+%
+%\bibitem[Prausnitz et~al.(1998)Prausnitz, Lichtenthaler, and
+%  de~Azevedo]{Prausnitz1998}
+%J.M. Prausnitz, R.N. Lichtenthaler y E.G. de~Azevedo.
+%\newblock \emph{Molecular Thermodynamics of Fluid-Phase Equilibria}.
+%\newblock Pearson Education, 1998.
+%\newblock ISBN 9780132440509.
+%
+%\bibitem[Valderrama y Zavaleta(2005)]{Valderrama2005}
+%Jose~O. Valderrama y Jack Zavaleta.
+%\newblock Sublimation pressure calculated from high-pressure gas-solid equilibrum data using genetic algorithms.
+%\newblock \emph{Industrial \& Engineering Chemestry Research}, 44\penalty0
+%  (13):\penalty0 4824--4833, 2005.
+%
+%\bibitem[Wong y Sandler(1992)]{WongSandler1992}
+%David Shan~Hill Wong y Stanley~I. Sandler.
+%\newblock A theoretically correct mixing rule for cubic equations of state.
+%\newblock \emph{AIChE Journal}, 38\penalty0 (5):\penalty0 671--680, 1992.
+%\newblock ISSN 1547-5905.
+%
+%\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+%
+%
+%  Template para Resumen Extendido
+%  X CSMIO UADY
+%
+
+\documentclass[10pt]{article}
+
+\usepackage{anysize} 
+\papersize{27.9cm}{21.6cm}
+\marginsize{1.5cm}{1.5cm}{-2cm}{-1.0cm}% izq der arriba
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+
+\usepackage[round]{natbib}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\decimalpoint
+
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Palabras claves---}} #1
+}
+
+
+%
+%  Título, autores, adscripciones, correo electrónico
+%
+\title{\bf Uso de Q-Learning en el Problema de Entrega de Concreto}
+
+\author{\bf Lic. Arnoldo Del Toro Peña \\
+\normalsize{
+Facultad de Ingeniería Mecánica y Elécctrica, Universidad Autónoma de Nuevo León}\\
+\normalsize{
+$^\ast$ Correo electr\'onico:  arnoldo.toropn@uanl.edu.mx}
+}
+
+\date{\empty}
+
+\begin{document}
+\maketitle
+\keywords{Q-Learning, CDP, Optimización, Concreto.}\\
+\medskip
+
+%
+%  Resumen
+%
+Desde un punto general los proveedores de concreto tienen múltiples problemas a los que se enfrentan, por ejemplo la adquisición de las materias primas, la entrega del concreto, administración de los conductores etc. En este artículo se presenta el Problema de Entrega de Concreto (Concrete Delivary Problem) que se centra en la parte logística y de distribución de la operación, dicho de otra manera: la planificación y el enrutamiento del concreto. El objetivo es encontrar rutas que cumplan con múltiples visitas (solo si es necesario) a diferentes depósitos de producción de concreto utilizando una flota de vehículos (heterogéneos) y cumpliendo con las entregas a los distintos sitios de de construcción, a todo esto se adhiere una planificación y restricciones de enrutamiento.
+
+En la actualidad el Problema de Entrega de Concreto (Concrete Delivary Problem) se ha presentado en literaturas de maneras muy diferentes y de cantidad considerable, sin embargo sus amplias definiciones, variantes y su dificultad para obtener datos de manera pública tiene como consecuencia un obstáculo al momento de realizar sus comparaciones, por lo tanto utilizamos instancias de acceso público, y se toman dos enfoques: uno metaheurístico y otro exacto, para verificar los resultados obtenidos en el algoritmo Q-Learning implementado para la obtención de la solución al Problema de Entrega de Concreto.
+
+\textbf{Objetivos:} 
+	\begin{itemize}
+		\item Obtener mediante el algoritmo de Q-Learning una solución factible al (\textit{Concrete Delivery Problem}).
+		\item Determinar bajo que parámetros se puede obtener la solución óptima de la instancias propuestas.
+		\item Doble Q-Learning.
+		\item Lograr definir métodos heurísticos como acciones dentro de Q-Learning.
+	\end{itemize}
+
+\textbf{Metas:} 
+  \begin{enumerate}
+    \item Análisis de las funciones aplicadas.
+    \item Obtener fitness óptimo.
+    \item Recopilación y análisis de fitness.
+    \item Recopilación de tiempos de compilación.
+  \end{enumerate}
+
+\textbf{Resultados esperados:}
+\begin{itemize}
+  \item Recopilar evidencia que fundamente la factibilidad para el uso de Q-Learning en el Problema de Entrega de Concreto.
+  \item Generar documentación de los tiempos de compilación en las funciones aplicadas.
+\end{itemize}
+
+El impacto de la exploración al implementar el aprendizaje Q-Learning en Problema de Entrega de Concreto (\textit{Concrete Delivery Problem}) tiene consecuencias tanto tecnológicas y sociales; por un lado el explorar nuevos caminos vinculados al campo de Inteligencia Artificial como solución al problema CDP nos pone en las últimas líneas de tecnología, y por el lado social el uso de aprendizaje automatizado permite que las personas tengan más tiempo para desempeñarse en otras actividades dentro de su campo laboral mientras se realiza el aprendiaje.
+%
+%   Referencias
+%
+
+
+
+%\bibliographystyle{plainnat}
+%\begin{thebibliography}{3}
+%\small 
+%
+%\bibitem[Prausnitz et~al.(1998)Prausnitz, Lichtenthaler, and
+%  de~Azevedo]{Prausnitz1998}
+%J.M. Prausnitz, R.N. Lichtenthaler y E.G. de~Azevedo.
+%\newblock \emph{Molecular Thermodynamics of Fluid-Phase Equilibria}.
+%\newblock Pearson Education, 1998.
+%\newblock ISBN 9780132440509.
+%
+%\bibitem[Valderrama y Zavaleta(2005)]{Valderrama2005}
+%Jose~O. Valderrama y Jack Zavaleta.
+%\newblock Sublimation pressure calculated from high-pressure gas-solid equilibrum data using genetic algorithms.
+%\newblock \emph{Industrial \& Engineering Chemestry Research}, 44\penalty0
+%  (13):\penalty0 4824--4833, 2005.
+%
+%\bibitem[Wong y Sandler(1992)]{WongSandler1992}
+%David Shan~Hill Wong y Stanley~I. Sandler.
+%\newblock A theoretically correct mixing rule for cubic equations of state.
+%\newblock \emph{AIChE Journal}, 38\penalty0 (5):\penalty0 671--680, 1992.
+%\newblock ISSN 1547-5905.
+%
+%\end{thebibliography}
+
+\end{document}
